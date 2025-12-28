@@ -1,35 +1,37 @@
-public class Student extends Human {
-    private String major;
+package model;
+
+// 2. Student реализует только один интерфейс
+// 5. Класс final
+public final class Student extends Human implements IStudyable {
+    private String studentId;
     private float gpa;
+    // 5. Final поле
+    private final String university;
 
-    public Student() {
-        super();
-    }
-
-    public Student(int age, String name, boolean isAlive, String major, float gpa) {
+    public Student(int age, String name, boolean isAlive, String studentId, float gpa, String university) {
         super(age, name, isAlive);
-        this.major = major;
+        this.studentId = studentId;
         this.gpa = gpa;
+        this.university = university;
     }
 
-    public String getMajor() {
-        return major;
-    }
-
-    public void setMajor(String major) {
-        this.major = major;
-    }
-
-    public float getGpa() {
-        return gpa;
-    }
-
-    public void setGpa(float gpa) {
-        this.gpa = gpa;
+    // 5. Final метод
+    public final void showUniversity() {
+        System.out.println("University: " + university);
     }
 
     @Override
-    public void describe() {
-        System.out.println("This is a student majoring in " + major + " with GPA " + gpa + ".");
+    public void study() {
+        System.out.println(name + " is studying.");
+    }
+
+    @Override
+    public void doHomework() {
+        System.out.println(name + " is doing homework.");
+    }
+
+    @Override
+    public void getInfo() {
+        System.out.println("Student: " + name + ", Age: " + age + ", GPA: " + gpa);
     }
 }

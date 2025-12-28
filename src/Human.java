@@ -1,10 +1,10 @@
-public class Human {
-    private int age;
-    private String name;
-    private boolean isAlive;
+package model;
 
-    public Human() {
-    }
+public abstract class Human {
+    // 6. Protected поля
+    protected int age;
+    protected String name;
+    protected boolean isAlive;
 
     public Human(int age, String name, boolean isAlive) {
         this.age = age;
@@ -12,35 +12,10 @@ public class Human {
         this.isAlive = isAlive;
     }
 
-    public int getAge() {
-        return age;
+    public void greet() {
+        System.out.println("Hello, my name is " + name);
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public boolean getIsAlive() {
-        return isAlive;
-    }
-
-    public void setIsAlive(boolean isAlive) {
-        this.isAlive = isAlive;
-    }
-
-    public void introduce() {
-        System.out.println("Hi, my name is " + name + " and I am " + age + " years old.");
-    }
-
-    public void describe() {
-        System.out.println("This is a general human description.");
-    }
+    // 4. Абстрактный метод
+    public abstract void getInfo();
 }

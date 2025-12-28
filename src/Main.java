@@ -1,39 +1,43 @@
-import java.util.Scanner;
+import model.*;
 
 public class Main {
     public static void main(String[] args) {
-        Human human = new Human(25, "Nurlan Akhmetov", true);
-        Employee employee = new Employee(30, "Aigerim Sultanova", true, "Manager", 50000.0f);
-        Student student = new Student(20, "Yerzhan Omarov", true, "Computer Science", 3.5f);
+        // 7. Разные типы ссылок (Полиморфизм)
 
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter age for new student:");
-        int age = sc.nextInt();
-        sc.nextLine();
-        System.out.println("Enter name for new student:");
-        String name = sc.nextLine();
-        System.out.println("Enter major for new student:");
-        String major = sc.nextLine();
-        System.out.println("Enter GPA for new student:");
-        float gpa = sc.nextFloat();
-        Student inputStudent = new Student(age, name, true, major, gpa);
+        // Ссылка на сам класс
+        Student student = new Student(18, "Aruzhan", true, "S123", 3.5f, "KBTU");
+        Employee employee = new Employee(30, "Dias", true, "Engineer", 500000);
 
-        employee.setSalary(55000.0f);
-        System.out.println("Updated employee salary: " + employee.getSalary());
+        // Ссылка на суперкласс (Абстрактный класс)
+        Human human1 = new Student(19, "Aliya", true, "S999", 3.8f, "SDU");
+        Human human2 = new Employee(40, "Marat", true, "Manager", 700000);
 
-        student.setGpa(3.8f);
-        System.out.println("Updated student GPA: " + student.getGpa());
+        // Ссылка на интерфейсы
+        IStudyable studyRef = student;
+        IWorkable workRef = employee;
 
-        human.introduce();
-        human.describe();
+        // 8. Использование всех методов
+        System.out.println("--- Student Methods ---");
+        student.greet();
+        student.study();
+        student.doHomework();
+        student.showUniversity();
+        student.getInfo();
 
-        employee.introduce();
-        employee.describe();
+        System.out.println("\n--- Employee Methods ---");
+        employee.greet();
+        employee.work();
+        employee.getSalary();
+        employee.study();
+        employee.doHomework();
+        employee.getInfo();
 
-        student.introduce();
-        student.describe();
+        System.out.println("\n--- Polymorphism (Human references) ---");
+        human1.getInfo();
+        human2.getInfo();
 
-        inputStudent.introduce();
-        inputStudent.describe();
+        System.out.println("\n--- Interface references ---");
+        studyRef.study();
+        workRef.work();
     }
 }
